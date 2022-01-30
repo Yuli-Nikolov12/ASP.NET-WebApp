@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using ASP.NET.WebApp.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,10 @@ namespace ASP.NET.WebApp.Data
             : base(options)
         {
         }
+        public DbSet<Books> Books { get; set; }
+        public DbSet<Authors> Authors { get; set; }
+        public DbSet<Categories> Categories { get; set; }
+
+
     }
 }
