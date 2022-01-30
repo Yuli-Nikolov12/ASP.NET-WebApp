@@ -32,6 +32,7 @@ namespace ASP.NET.WebApp
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -61,6 +62,11 @@ namespace ASP.NET.WebApp
 
             app.UseEndpoints(endpoints =>
             {
+                    endpoints.MapControllerRoute(
+                      name: "Admin",
+                      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                    );
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
