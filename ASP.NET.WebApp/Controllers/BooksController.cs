@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ASP.NET.WebApp.Data;
 using ASP.NET.WebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ASP.NET.WebApp.Controllers
 {
+    [Authorize]
     public class BooksController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -67,8 +69,8 @@ namespace ASP.NET.WebApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Author"] = new SelectList(_context.Authors, "Author", "Author", books.Author);
-            ViewData["Category"] = new SelectList(_context.Categories, "Category", "Category", books.Category);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "AuthorId", "AuthorId", books.AuthorId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", books.CategoryId);
             return View(books);
         }
 
@@ -85,8 +87,8 @@ namespace ASP.NET.WebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["Author"] = new SelectList(_context.Authors, "Author", "Author", books.Author);
-            ViewData["Category"] = new SelectList(_context.Categories, "Category", "Category", books.Category);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "AuthorId", "AuthorId", books.AuthorId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", books.CategoryId);
             return View(books);
         }
 
@@ -122,8 +124,8 @@ namespace ASP.NET.WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Author"] = new SelectList(_context.Authors, "Author", "Author", books.Author);
-            ViewData["Category"] = new SelectList(_context.Categories, "Category", "Category", books.Category);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "AuthorId", "AuthorId", books.AuthorId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", books.CategoryId);
             return View(books);
         }
 

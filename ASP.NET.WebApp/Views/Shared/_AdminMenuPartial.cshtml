@@ -6,6 +6,9 @@
 
 @if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.GetUserAsync(User).Result, "admin"))
 {
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Admin" asp-controller="Book">Books</a>
+    </li>
     <li class="nav-item dropdown show">
         <a class="dropdown-toggle nav-link text-dark" href="#" data-toggle="dropdown">Admin</a>
         <div class="dropdown-menu">

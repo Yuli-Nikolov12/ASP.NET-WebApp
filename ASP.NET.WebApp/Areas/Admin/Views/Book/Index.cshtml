@@ -6,7 +6,9 @@
 
 <h1>Books</h1>
 
-
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -47,7 +49,9 @@
                 @Html.DisplayFor(modelItem => item.Published)
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.BooksId">Details</a>
+                <a asp-action="Edit" asp-route-id="@item.BooksId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BooksId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BooksId">Delete</a>
             </td>
         </tr>
 }

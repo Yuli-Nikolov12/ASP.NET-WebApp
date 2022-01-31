@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ASP.NET.WebApp.Data;
 using ASP.NET.WebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ASP.NET.WebApp.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AuthorsController : Controller
     {
         private readonly ApplicationDbContext _context;
